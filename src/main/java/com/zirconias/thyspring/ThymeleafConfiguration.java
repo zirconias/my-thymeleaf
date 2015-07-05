@@ -1,4 +1,4 @@
-package pl.codeleak.demos.sbt;
+package com.zirconias.thyspring;
 
 import com.github.dandelion.datatables.thymeleaf.dialect.DataTablesDialect;
 import com.github.mxab.thymeleaf.extras.dataattribute.dialect.DataAttributeDialect;
