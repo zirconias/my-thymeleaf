@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "spring.thymeleaf.templates_root",
+      "type": "java.lang.String",
+      "description": "path to thymeleaf templates files."
+    }
+  ]
+}
