@@ -31,6 +31,7 @@ import java.util.Locale;
 
 @Configuration
 public class ThymeleafConfiguration {
+    @SuppressWarnings("SpringJavaAutowiringInspection")
     @Autowired
     private ThymeleafProperties properties;
 
