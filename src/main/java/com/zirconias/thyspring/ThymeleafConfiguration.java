@@ -6,24 +6,13 @@ import nz.net.ultraq.thymeleaf.LayoutDialect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.thymeleaf.ThymeleafProperties;
-import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
-import org.springframework.web.servlet.LocaleResolver;
-import org.springframework.web.servlet.i18n.SessionLocaleResolver;
-import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.extras.conditionalcomments.dialect.ConditionalCommentsDialect;
 import org.thymeleaf.spring4.SpringTemplateEngine;
-import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.FileTemplateResolver;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 import org.thymeleaf.templateresolver.TemplateResolver;
-
-import java.util.Locale;
 
 /**
  * Created by xirc on 03/07/2015.
@@ -33,9 +22,9 @@ import java.util.Locale;
 public class ThymeleafConfiguration {
     @SuppressWarnings("SpringJavaAutowiringInspection")
     @Autowired
-    private ThymeleafProperties properties;
+    private ThymeleafProperties thymeleafProperties;
 
-    @Value("${spring.thymeleaf.templates_root:}")
+    @Value("${spring.thymeleaf.templates_root:}")//src/main/resources/templates/
     private String templatesRoot;
 
     @Autowired
@@ -44,10 +33,10 @@ public class ThymeleafConfiguration {
     @Bean
     public ITemplateResolver defaultTemplateResolver() {
         TemplateResolver resolver = new FileTemplateResolver();
-        resolver.setSuffix(properties.getSuffix());
+        resolver.setSuffix(thymeleafProperties.getSuffix());
         resolver.setPrefix(templatesRoot);
-        resolver.setTemplateMode(properties.getMode());
-        resolver.setCharacterEncoding(properties.getEncoding());
+        resolver.setTemplateMode(thymeleafProperties.getMode());
+        resolver.setCharacterEncoding(thymeleafProperties.getEncoding());
         if (env.getProperty("spring.profiles.active").equals("dev")) {
             resolver.setCacheable(false);
         }

@@ -14,16 +14,21 @@ import java.security.Principal;
 public class HomeController {
 
 
-    @RequestMapping(value = "/",method = RequestMethod.GET)
+    /*@RequestMapping(value = "/",method = RequestMethod.GET)
     public ModelAndView messages() {
         ModelAndView mav = new ModelAndView("index");
         String[] messages = {"a","b","c"};
         mav.addObject("messages", messages);
         return mav;
-    }
+    }*/
 
     @RequestMapping("/do")
     public String redirect() {
         return "redirect:/?q=Thymeleaf Is Great!";
+    }
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String index(Principal principal) {
+        return principal != null ? "home/homeSignedIn" : "home/homeNotSignedIn";
     }
 }
