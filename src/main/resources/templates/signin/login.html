@@ -34,13 +34,14 @@
         <form class="form-login" action="index.html">
             <h2 class="form-login-heading" th:text="#{login.connect}"></h2>
             <div class="login-wrap">
-                <input type="text" class="form-control" th:placeholder="#{login.user}"  autofocus=""/>
+                <input type="text"  class="form-control" th:placeholder="#{login.user}"  autofocus="" />
                 <br />
-                <input type="password" class="form-control" th:placeholder="#{login.pass}" />
+                <input th:type="password" class="form-control" th:placeholder="#{login.pass}" />
                 <label class="checkbox">
 		                <span class="pull-right">
 		                    <a data-toggle="modal" href="login.html#myModal" th:text="#{login.forgetpass}"></a>
 		                </span>
+                        <span><a href="#" class="pull-left" data-toggle="modal" data-target="#myModal2">ajax</a></span>
                 </label>
                 <button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock" th:text="#{login.login}"></i></button>
                 <hr />
@@ -78,6 +79,21 @@
                     </div>
                 </div>
             </div><!-- modal -->
+            <!-- Modal -->
+            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Signup</h4>
+                        </div>
+                        <div class="modal-body" id="myModalBody">Lorem ipsum</div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
         </form>
 
     </div>
@@ -94,8 +110,22 @@
     /*<![CDATA[*/
     var context = [[@{/}]];
     /*]]>*/
-    $.backstretch(context +"img/login-bg.jpg", {speed: 500});
+    $.backstretch(context +"img/login-bg.jpg", {speed: 600});
 </script>
-
+<script>
+    /* Fill in modal with content loaded with Ajax */
+    $(document).ready(function () {
+        $('#myModal2').on('show.bs.modal', function (e) {
+            $("#myModalBody").text("");
+            $.ajax({
+                url: "signup",
+                cache: false
+            })
+                    .done(function (html) {
+                        $("#myModalBody").append(html);
+                    });
+        });
+    });
+</script>
 </body>
 </html>
