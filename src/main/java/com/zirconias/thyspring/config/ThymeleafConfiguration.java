@@ -1,4 +1,4 @@
-package com.zirconias.thyspring;
+package com.zirconias.thyspring.config;
 
 import com.github.dandelion.datatables.thymeleaf.dialect.DataTablesDialect;
 import com.github.mxab.thymeleaf.extras.dataattribute.dialect.DataAttributeDialect;

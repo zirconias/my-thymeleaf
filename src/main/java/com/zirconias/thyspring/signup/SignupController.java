@@ -1,14 +1,9 @@
 package com.zirconias.thyspring.signup;
 
-import com.zirconias.thyspring.AjaxUtils;
+import com.zirconias.thyspring.config.AjaxUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 
 /**
  * Created by xirc on 09/07/2015.
@@ -32,7 +27,7 @@ public class SignupController {
     }
 
     @RequestMapping(value = "signin", method = RequestMethod.POST)
-    public String signup(@RequestParam String j_username,@RequestParam String j_password) {
+    public String signin(@RequestParam String j_username,@RequestParam String j_password) {
 
         //Account account = accountRepository.save(signupForm.createAccount());
         //userService.signin(account);

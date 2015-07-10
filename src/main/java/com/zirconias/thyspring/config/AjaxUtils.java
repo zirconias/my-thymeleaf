@@ -1,4 +1,4 @@
-package com.zirconias.thyspring;
+package com.zirconias.thyspring.config;
 
 /**
  * Created by xirc on 09/07/2015.
