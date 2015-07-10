@@ -31,12 +31,15 @@
 <div id="login-page">
     <div class="container">
 
-        <form class="form-login" action="index.html">
+        <form class="form-login" action="index.html" method="post" th:action="@{/signin}">
             <h2 class="form-login-heading" th:text="#{login.connect}"></h2>
             <div class="login-wrap">
-                <input type="text"  class="form-control" th:placeholder="#{login.user}"  autofocus="" />
+                <th:block th:if="${param.error != null}">
+                    <div th:replace="fragments/alert :: alert (type='danger', message='Sign in error. Please try again.')">Alert</div>
+                </th:block>
+                <input type="text"  class="form-control" th:placeholder="#{login.user}"  th:name="username" autofocus="" />
                 <br />
-                <input th:type="password" class="form-control" th:placeholder="#{login.pass}" />
+                <input th:type="password" class="form-control" th:placeholder="#{login.pass}" th:name="password" />
                 <label class="checkbox">
 		                <span class="pull-right">
 		                    <a data-toggle="modal" href="login.html#myModal" th:text="#{login.forgetpass}"></a>
